@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package orbitdb;
+
+// Define the OrbitDB service
+service OrbitDB {
+  // Define the RPC methods for the OrbitDB service
+  rpc CreateDatabase(CreateDatabaseRequest) returns (CreateDatabaseResponse) {}
+  rpc OpenDatabase(OpenDatabaseRequest) returns (OpenDatabaseResponse) {}
+  rpc CloseDatabase(CloseDatabaseRequest) returns (CloseDatabaseResponse) {}
+}
+
+// Define the messages for the OrbitDB service
+
+message CreateDatabaseRequest {
+  string name = 1;
+  string type = 2;
+  string options = 3;
+}
+
+message CreateDatabaseResponse{
+  string placeholder = 1;
+}
+
+message OpenDatabaseRequest {
+  string placeholder = 1;
+}
+
+message OpenDatabaseResponse { 
+  string placeholder = 1;
+}
+
+message CloseDatabaseRequest {
+  string placeholder = 1;
+}
+
+message CloseDatabaseResponse{
+  string placeholder = 1;
+} 

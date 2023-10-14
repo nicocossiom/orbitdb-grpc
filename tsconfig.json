@@ -1,0 +1,52 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": [
+            "ESNext",
+            "DOM",
+        ],
+        "module": "ESNext",
+        "rootDir": "./",
+        "moduleResolution": "node",
+        "moduleDetection": "auto",
+        "baseUrl": "./",
+        "paths": {
+            "@proto/*": [
+                "./src/pb/*",
+            ],
+            "@client/*": [
+                "./src/client/*",
+            ],
+            "@server/*": [
+                "./src/server/*",
+            ]
+        },
+        "noEmit": false,
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true,
+        "noUncheckedIndexedAccess": true,
+        "useDefineForClassFields": true,
+        "declaration": true,
+        "pretty": true,
+    },
+    "tsc-alias": {
+        "verbose": false,
+        "resolveFullPaths": true
+    },
+    "include": [
+        "./src/**/*",
+    ],
+    "exclude": [
+        "node_modules",
+    ]
+}
