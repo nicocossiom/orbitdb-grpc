@@ -19,10 +19,7 @@
     "prettier"
   ],
   "rules": {
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": "off",
     "sort-imports": "warn",
     "linebreak-style": [
       "error",

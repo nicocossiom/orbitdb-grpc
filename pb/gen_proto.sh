@@ -17,11 +17,10 @@ fi
 # Clean all existing generated files
 rm -r "${OUT_DIR}" 2>/dev/null
 mkdir "${OUT_DIR}"
-
+    #--ts_proto_opt=useOptionals=all \
 # Generate all messages
 protoc \
     --plugin="protoc-gen-ts_proto=${PROTOC_GEN_TS_PATH}" \
-    --ts_proto_opt=useOptionals=all \
     --ts_proto_opt=importSuffix=.js \
     --ts_proto_opt=esModuleInterop=true \
     --ts_proto_opt=addGrpcMetadata=true \

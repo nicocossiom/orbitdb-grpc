@@ -8,3 +8,10 @@ export const client: OrbitDBClient = createClient(
   channel,
 )
 
+await client.openDatabase({
+  name: "prueba",
+  type: undefined,
+}).then(res => {
+  console.log(`Created new db ${JSON.stringify(res)}`)
+}).catch(err => console.error(err))
+console.log("done")
