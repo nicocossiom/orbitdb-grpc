@@ -8,11 +8,11 @@
     },
     "type": "module",
     "scripts": {
-        "start:client": "node -r source-map-support/register dist/src/client/client.js",
-        "start:server": "node -r source-map-support/register dist/src/server/server.js",
+        "start:client": "node --env-file=.env -r source-map-support/register dist/src/client/client.js ",
+        "start:server": "node --env-file=.env -r source-map-support/register dist/src/server/server.js",
         "build": "tsc && tsc-alias",
         "build:watch": "(concurrently \"tsc -w\" \"tsc-alias -w\")",
-        "build:proto": "pb/gen_proto.sh",
+        "build:proto": "protoc --ts_opt generate_dependencies --ts_opt server_grpc1 --ts_opt client_grpc1 --ts_out src/pb --proto_path pb pb/orbitdb.proto",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -24,9 +24,10 @@
     "author": "Nicolás Cossío Miravalles",
     "license": "ISC",
     "devDependencies": {
+        "@types/google-protobuf": "^3.15.9",
         "@types/node": "^20.8.4",
-        "@typescript-eslint/eslint-plugin": "^6.7.5",
-        "@typescript-eslint/parser": "^6.7.5",
+        "@typescript-eslint/eslint-plugin": "^6.8.0",
+        "@typescript-eslint/parser": "^6.8.0",
         "concurrently": "^8.2.1",
         "eslint": "^8.51.0",
         "eslint-config-prettier": "^9.0.0",
@@ -35,20 +36,20 @@
         "ipfs-core-types": "^0.14.1",
         "source-map-support": "^0.5.21",
         "ts-node": "^10.9.1",
-        "ts-proto": "^1.161.1",
-        "ts-protoc-gen": "^0.15.0",
         "tsc-alias": "^1.8.8",
         "tsconfig-paths": "^4.2.0",
         "tslib": "^2.6.2",
         "typescript": "^5.2.2"
     },
     "dependencies": {
+        "@grpc/grpc-js": "^1.9.6",
         "@orbitdb/core": "link:orbitdb",
+        "@protobuf-ts/plugin": "^2.9.1",
+        "@protobuf-ts/runtime": "^2.9.1",
+        "@protobuf-ts/runtime-rpc": "^2.9.1",
+        "google-protobuf": "^3.21.2",
         "ipfs-core": "^0.18.1",
         "long": "^5.2.3",
-        "nice-grpc": "^2.1.5",
-        "nice-grpc-common": "^2.0.2",
-        "protobufjs": "^7.2.5",
-        "zod": "^3.22.4"
+        "winston": "^3.11.0"
     }
 }

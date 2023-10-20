@@ -34,7 +34,6 @@
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "skipLibCheck": true,
-        "noUncheckedIndexedAccess": true,
         "useDefineForClassFields": true,
         "declaration": true,
         "pretty": true,
@@ -45,6 +44,7 @@
     },
     "include": [
         "./src/**/*",
+        ".eslintrc.cjs"
     ],
     "exclude": [
         "node_modules",
