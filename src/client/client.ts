@@ -1,7 +1,7 @@
 import { createPromiseClient } from "@connectrpc/connect"
 import { createConnectTransport } from "@connectrpc/connect-node"
-import { OrbitDBService } from "@proto/orbitdb_connect"
-import { DatabaseTypes } from "@proto/orbitdb_pb"
+import { OrbitDBService } from "@proto/orbitdbrpc/v1/orbitdb_connect"
+import { DatabaseTypes } from "@proto/orbitdbrpc/v1/orbitdb_pb"
 
 const transport = createConnectTransport(
   {

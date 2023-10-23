@@ -3,8 +3,8 @@ import winston from "winston"
 const { format, transports, createLogger } = winston
 const winstonConsole = new transports.Console()
 const customFormat = format.printf(info => {
-  const { level, message, timestamp, stack } = info
-  const logMessage = `${timestamp} [${level}] : ${stack? message : "\n    " + message}`
+  const { level, message, name, timestamp, stack } = info
+  const logMessage = `${timestamp} [${level}] : ${name? name : ""} ${stack? message : "\n    " + message}`
   const logStack = stack ? `\n${stack}` : ""
   return `${logMessage} ${logStack}`
 })

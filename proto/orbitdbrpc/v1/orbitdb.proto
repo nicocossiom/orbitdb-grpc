@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package orbitdbrpc.v1;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+// OrbitDB RPC service. This service is used to interact with an OrbitDB instance
+// running locally on the same machine. This allows for shared access to the same
+// OrbitDB instance from multiple clients. This service is not intended to be used
+// for remote access to an OrbitDB instance.
+service OrbitDBService {
+  rpc StopService(StopServiceRequest) returns (StopServiceResponse) {}
+
+  rpc AvailableDatabases(AvailableDatabasesRequest) returns (AvailableDatabasesResponse) {}
+
+  rpc OpenDatabase(OpenDatabaseRequest) returns (OpenDatabaseResponse) {}
+
+  rpc CloseDatabase(CloseDatabaseRequest) returns (CloseDatabaseResponse) {}
+}
+
+// Common typese nums
+
+// DatabaseTypes
+extend google.protobuf.EnumValueOptions {
+  optional string string_name = 123456789;
+}
+enum DatabaseTypes {
+  DATABASE_TYPES_UNSPECIFIED = 0;
+  DATABASE_TYPES_DOCUMENT = 1 [(string_name) = "documents"];
+  DATABASE_TYPES_KEYVALUE = 2 [(string_name) = "keyvalue"];
+  DATABASE_TYPES_EVENT = 3 [(string_name) = "display_value"];
+  DATABASE_TYPES_INDEXED_KEY_VALUE = 4 [(string_name) = "display_value"];
+}
+
+// ControllerTypes
+enum ControllerTypes {
+  CONTROLLER_TYPES_UNSPECIFIED = 0;
+  CONTROLLER_TYPES_IPFS = 1;
+  CONTROLLER_TYPES_ORBITDB = 2;
+}
+
+// Database
+message Database {
+  string name = 1;
+  string address = 2;
+  string type = 3;
+  ControllerTypes controller = 4;
+}
+
+// RPC messages
+
+// OpenDatabase
+message OpenDatabaseRequest {
+  string name = 1;
+  optional string db_address = 2;
+  DatabaseTypes type = 3;
+  optional Options options = 4;
+  message Options {
+    optional string ipfs_api_address = 1;
+    optional string meta = 2;
+    optional bool sync = 3;
+    optional ControllerTypes controller = 4;
+    optional google.protobuf.Any database_structure = 5;
+    // TODO see if more options can be somehow added here see
+    // https://api.orbitdb.org/module-OrbitDB-OrbitDB.html
+  }
+}
+message OpenDatabaseResponse {
+  string db_address = 1;
+  bool is_new = 2;
+}
+
+// CloseDatabase
+message CloseDatabaseRequest {
+  string db_address = 1;
+}
+message CloseDatabaseResponse {}
+
+// AvailableDatabases
+message AvailableDatabasesResponse {
+  repeated Database databases = 1;
+}
+message AvailableDatabasesRequest {}
+
+// StopService
+message StopServiceRequest {}
+message StopServiceResponse {}

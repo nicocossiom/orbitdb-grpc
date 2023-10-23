@@ -1,8 +1,8 @@
 import { Empty } from "@bufbuild/protobuf"
 import { ServiceImpl } from "@connectrpc/connect"
 import { OrbitDB, createOrbitDB } from "@orbitdb/core"
-import { OrbitDBService } from "@proto/orbitdb_connect"
-import { AvailableDatabasesResponse, OpenDatabaseRequest, OpenDatabaseResponse } from "@proto/orbitdb_pb"
+import { OrbitDBService } from "@proto/orbitdbrpc/v1/orbitdb_connect"
+import { AvailableDatabasesResponse, OpenDatabaseRequest, OpenDatabaseResponse } from "@proto/orbitdbrpc/v1/orbitdb_pb"
 import { IPFS, create as createIPFS } from "ipfs-core"
 
 export default class OrbitDBServiceImplementation implements ServiceImpl<typeof OrbitDBService> {

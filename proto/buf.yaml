@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/nicocossiom/orbitdb-grpc
+name: buf.build/nicocossiom/orbitdb-rpc
 breaking:
   use:
     - FILE

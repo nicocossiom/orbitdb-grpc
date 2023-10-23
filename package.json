@@ -12,7 +12,7 @@
         "start:server": "node --env-file=.env -r source-map-support/register dist/src/server/server.js",
         "build": "tsc && tsc-alias",
         "build:watch": "(concurrently \"tsc -w\" \"tsc-alias -w\")",
-        "build:proto": "buf generate proto",
+        "build:proto": "cd proto && buf generate && cd ..",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
