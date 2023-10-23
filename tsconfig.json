@@ -12,7 +12,7 @@
         "baseUrl": "./",
         "paths": {
             "@proto/*": [
-                "./src/pb/*",
+                "./src/proto/*",
             ],
             "@client/*": [
                 "./src/client/*",

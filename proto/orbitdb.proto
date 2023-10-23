@@ -4,6 +4,7 @@ package orbitdb;
 import "google/protobuf/any.proto";
 import "google/protobuf/descriptor.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
 
 extend google.protobuf.EnumValueOptions {
   optional string string_name = 123456789;
@@ -32,9 +33,9 @@ message Database {
   ControllerTypes controller = 4;
 }
 
-message OpenDatabaseRequest {  
+message OpenDatabaseRequest {
   string name = 1;
-  optional string db_address = 2; 
+  optional string db_address = 2;
   DatabaseTypes type = 3;
   optional Options options = 4;
   message Options {
@@ -53,26 +54,19 @@ message OpenDatabaseResponse {
   bool is_new = 2;
 }
 
-message CloseDatabaseRequest {
-  string db_address = 1;
-}
+message CloseDatabaseRequest { string db_address = 1; }
 
-message AvailableDatabasesResponse{
-  repeated Database databases = 1;
-}
+message AvailableDatabasesResponse { repeated Database databases = 1; }
 
 // Define the OrbitDB service
-service OrbitDB {
+service OrbitDBService {
   // Define the RPC methods for the OrbitDB service
-  rpc StopService(google.protobuf.Empty) 
-    returns (google.protobuf.Empty) {}
-    
-  rpc AvailableDatabases(google.protobuf.Empty) 
-    returns (AvailableDatabasesResponse) {}
+  rpc StopService(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  rpc OpenDatabase(OpenDatabaseRequest) 
-    returns (OpenDatabaseResponse) {}
+  rpc AvailableDatabases(google.protobuf.Empty)
+      returns (AvailableDatabasesResponse) {}
 
-  rpc CloseDatabase(CloseDatabaseRequest)
-    returns (google.protobuf.Empty) {}
+  rpc OpenDatabase(OpenDatabaseRequest) returns (OpenDatabaseResponse) {}
+
+  rpc CloseDatabase(CloseDatabaseRequest) returns (google.protobuf.Empty) {}
 }
