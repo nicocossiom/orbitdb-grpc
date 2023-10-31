@@ -8,7 +8,9 @@ import { MethodKind } from "@bufbuild/protobuf";
 
 /**
  * OrbitDB RPC service. This service is used to interact with an OrbitDB instance
- * running locally on the same machine.
+ * running locally on the same machine. This allows for shared access to the same
+ * OrbitDB instance from multiple clients. This service is not intended to be used
+ * for remote access to an OrbitDB instance.
  *
  * @generated from service orbitdbrpc.v1.OrbitDBService
  */

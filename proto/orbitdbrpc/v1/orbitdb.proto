@@ -25,6 +25,7 @@ service OrbitDBService {
 extend google.protobuf.EnumValueOptions {
   optional string string_name = 123456789;
 }
+
 enum DatabaseTypes {
   DATABASE_TYPES_UNSPECIFIED = 0;
   DATABASE_TYPES_DOCUMENT = 1 [(string_name) = "documents"];
@@ -36,8 +37,8 @@ enum DatabaseTypes {
 // ControllerTypes
 enum ControllerTypes {
   CONTROLLER_TYPES_UNSPECIFIED = 0;
-  CONTROLLER_TYPES_IPFS = 1;
-  CONTROLLER_TYPES_ORBITDB = 2;
+  CONTROLLER_TYPES_IPFS = 1 [(string_name) = "ipfs"];
+  CONTROLLER_TYPES_ORBITDB = 2 [(string_name) = "orbitdb"];
 }
 
 // Database

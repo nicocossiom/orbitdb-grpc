@@ -2,7 +2,9 @@ import { connectNodeAdapter } from "@connectrpc/connect-node"
 import routes from "@server/connect"
 import { logger } from "@server/logger"
 import * as http2 from "http2"
+
 const serverLogger = logger.child({ name: "server" })
+
 const server = http2.createServer(
   connectNodeAdapter({ routes }) // responds with 404 for other requests
 )

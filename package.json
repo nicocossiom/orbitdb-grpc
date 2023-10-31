@@ -1,55 +1,57 @@
 {
-    "name": "orbitdb-grpc",
-    "version": "1.0.0",
-    "description": "GRPC implementation of OrbitDB",
-    "bin": {
-        "orbitdb-server": "./dist/src/client/server.js",
-        "orbitdb-client": "./dist/src/client/server.js"
-    },
-    "type": "module",
-    "scripts": {
-        "start:client": "node --env-file=.env -r source-map-support/register dist/src/client/client.js ",
-        "start:server": "node --env-file=.env -r source-map-support/register dist/src/server/server.js",
-        "build": "tsc && tsc-alias",
-        "build:watch": "(concurrently \"tsc -w\" \"tsc-alias -w\")",
-        "build:proto": "cd proto && buf generate && cd ..",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "ipfs",
-        "orbitdb",
-        "p2p",
-        "grpc"
-    ],
-    "author": "Nicolás Cossío Miravalles",
-    "license": "ISC",
-    "devDependencies": {
-        "@types/google-protobuf": "^3.15.9",
-        "@types/node": "^20.8.4",
-        "@typescript-eslint/eslint-plugin": "^6.8.0",
-        "@typescript-eslint/parser": "^6.8.0",
-        "concurrently": "^8.2.1",
-        "eslint": "^8.51.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-plugin-prettier": "^5.0.1",
-        "grpc-tools": "^1.12.4",
-        "ipfs-core-types": "^0.14.1",
-        "source-map-support": "^0.5.21",
-        "ts-node": "^10.9.1",
-        "tsc-alias": "^1.8.8",
-        "tsconfig-paths": "^4.2.0",
-        "tslib": "^2.6.2",
-        "typescript": "^5.2.2"
-    },
-    "dependencies": {
-        "@bufbuild/buf": "^1.27.1",
-        "@bufbuild/protobuf": "^1.3.3",
-        "@bufbuild/protoc-gen-es": "^1.3.3",
-        "@connectrpc/connect": "^1.1.2",
-        "@connectrpc/connect-node": "^1.1.2",
-        "@connectrpc/protoc-gen-connect-es": "^1.1.2",
-        "@orbitdb/core": "link:orbitdb",
-        "ipfs-core": "^0.18.1",
-        "winston": "^3.11.0"
-    }
+  "name": "orbitdb-grpc",
+  "version": "1.0.0",
+  "description": "GRPC implementation of OrbitDB",
+  "bin": {
+    "orbitdb-server": "./dist/src/client/server.js",
+    "orbitdb-client": "./dist/src/client/server.js"
+  },
+  "type": "module",
+  "scripts": {
+    "start:client": "node --env-file=.env -r source-map-support/register dist/src/client/client.js ",
+    "start:server": "node --env-file=.env -r source-map-support/register dist/src/server/server.js",
+    "build": "tsc && tsc-alias",
+    "build:watch": "(concurrently \"tsc -w --preserveWatchOutput\" \"tsc-alias -w\")",
+    "build:proto": "cd proto && buf generate && cd ..",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ipfs",
+    "orbitdb",
+    "p2p",
+    "grpc"
+  ],
+  "author": "Nicolás Cossío Miravalles",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.9",
+    "@types/node": "^20.8.4",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "grpc-tools": "^1.12.4",
+    "ipfs-core-types": "^0.14.1",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@bufbuild/buf": "^1.27.1",
+    "@bufbuild/protobuf": "^1.3.3",
+    "@bufbuild/protoc-gen-es": "^1.3.3",
+    "@connectrpc/connect": "^1.1.2",
+    "@connectrpc/connect-node": "^1.1.2",
+    "@connectrpc/protoc-gen-connect-es": "^1.1.2",
+    "@constl/bohr-db": "^0.0.6",
+    "@orbitdb/core": "./orbitdb",
+    "ajv": "^8.12.0",
+    "ipfs-core": "^0.18.1",
+    "winston": "^3.11.0"
+  }
 }

@@ -14,10 +14,11 @@ async function main() {
   const client = createPromiseClient(OrbitDBService, transport)
   const res = await client.openDatabase(
     {
-      type: DatabaseTypes.DOCUMENT,
+      type: DatabaseTypes.KEYVALUE,
       name: "test"
     }
-  )
+  ).catch(e => console.log(e))
   console.log(res)
+  console.log((await client.availableDatabases({})).databases)
 }
 await main()
